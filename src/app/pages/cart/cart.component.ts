@@ -27,7 +27,7 @@ export class CartComponent implements OnInit{
       })
       if(Profile){
         this.userProfile = true
-        if(Profile.data.user.avatar.secure_url){
+        if(Profile.data.user.avatar?.secure_url){
           this.imgUser = Profile.data.user.avatar.secure_url
         }
       }

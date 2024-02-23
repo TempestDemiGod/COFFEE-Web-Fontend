@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit{
   logout(){
     axios.get('/user/logout')
     const token = this.cookie.get('token')
-    console.log(token)
     document.cookie = `token=${token}; expires=${new Date(0).toUTCString()};`;
     this.router.navigate(['/sign-in'])
   }

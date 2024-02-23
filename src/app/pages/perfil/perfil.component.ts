@@ -15,7 +15,8 @@ export class PerfilComponent implements OnInit{
   previsualizacion?: string
   userProfile:boolean = false
   imgUser?: string 
-
+  userName?: string
+  userEmail?: string
   listFavorite?:any
 
   constructor(private sanitizer: DomSanitizer , private router: Router, private cookie: CookieService){}
@@ -62,7 +63,7 @@ export class PerfilComponent implements OnInit{
       })
       if(Profile){
         this.userProfile = true
-        if(Profile.data.user.avatar.secure_url){
+        if(Profile.data.user.avatar?.secure_url){
           this.imgUser = Profile.data.user.avatar.secure_url
         }
       }
@@ -70,7 +71,8 @@ export class PerfilComponent implements OnInit{
       if( favorite.length > 0){
         this.listFavorite = favorite
       }
-
+      this.userName = Profile.data.user.username
+      this.userEmail = Profile.data.user.email
       // this.course = allCourses.data
       // this.loading= false
     } catch (error) {
@@ -80,9 +82,14 @@ export class PerfilComponent implements OnInit{
 
   async saveImage(){
     try {
+      const token = this.cookie.get('token')
       const formAvatar = new FormData()
       formAvatar.append('avatar', this.image)
-      const avatar = await axios.put('/user/avatar', formAvatar )
+      const avatar = await axios.put('/user/avatar', formAvatar ,{
+        headers:{
+          token: token
+        }
+      } )
   
       if(avatar){
         location.reload()

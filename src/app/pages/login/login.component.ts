@@ -27,11 +27,7 @@ export class LoginComponent implements OnInit{
   auth = async() => {
     try {
       let user = await axios.post('/user/signIn',this.useForm.value).then(res=>{
-        console.log('res')
-    console.log(res)
     const token = res.data.token;
-    console.log(token)
-    console.log(res.data)
     const now = new Date();
     const expires = new Date(now.getTime() + 60 * 60 * 1000);
 
@@ -41,8 +37,6 @@ export class LoginComponent implements OnInit{
       this.router.navigate(["/"])
       
       const cookie = this.cookie.get('token')
-      console.log('cookie local')
-    console.log(cookie)
     } catch (error) {
       this.loginChange = true
       let e:any = error
@@ -56,12 +50,8 @@ export class LoginComponent implements OnInit{
 
   Register = async() => {
     try {
-      console.log(this.RegisterForm)
       let user = await axios.post('/user/signUp',this.RegisterForm.value).then(res=>{
-        console.log('res')
-    console.log(res)
     const token = res.data.data.token;
-    console.log(token)
     const now = new Date();
     const expires = new Date(now.getTime() + 10 * 60 * 1000);
 
