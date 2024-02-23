@@ -1,0 +1,18 @@
+.profile{
+    background-color: #F2E5E2;
+  }
+
+  .letter-main{
+    background: -webkit-linear-gradient(left,#966057,#401A0C);
+    background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #966057;
+  }
+  .letter-color{
+    color: #361405;
+  }
+    
+  .circulo-center{
+    background: #EFEDEA;
+}

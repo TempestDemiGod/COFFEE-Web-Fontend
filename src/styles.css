@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family:   'Poppins','Montserrat' ;
+}
+body{
+    background-color: #FCF9F8;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+    width: 8px;     
+    height: 8px;    
+    background-color: #F2E5E2;
+  }
+  body::-webkit-scrollbar-thumb {
+    background: #703B26;
+    border-radius: 4px;
+  }

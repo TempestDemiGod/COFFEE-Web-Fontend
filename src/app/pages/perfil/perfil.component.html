@@ -1,0 +1,75 @@
+<div *ngIf="modal" class="fixed h-full w-full bg-gray-800/70 z-30 flex justify-center items-center">
+    <div class="absolute top-0 left-0 w-full h-full -z-10" (click)="modalClose()" ></div>
+    <div class=" w-8/12 h-4/6 rounded-md bg-gray-600">
+        <div class="w-full h-1/6 pt-4 flex items-start justify-between px-4">
+            <h2 class="text-white">Image Avatar</h2>
+            <button (click)="modalClose()"  type="button"><i class="fa-solid text-2xl text-gray-300 hover:text-gray-400 fa-circle-xmark"></i></button>
+        </div>
+        <div class="flex ">
+            <div class="hidden w-4/12 xl:flex justify-center items-center">
+                <div class=" w-60 h-60 rounded-full flex justify-center items-center overflow-hidden">
+                    <img *ngIf="!previsualizacion &&  imgUser" class="w-full" [src]="imgUser" alt="">
+                    <img *ngIf="!previsualizacion &&  !imgUser" class="w-full" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707959976/coffeWeb/website%20image/imn114gfq6nxgfejdnjd.png" alt="">
+                    <img *ngIf="previsualizacion" [src]="previsualizacion" alt="">
+                </div>
+            </div>
+            <div class="w-full xl:w-8/12 flex justify-center items-center ">
+                <div class="flex items-center justify-center w-10/12">
+                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2  border-dashed rounded-lg cursor-pointer hover:bg-bray-800 bg-gray-700 border-gray-600 hover:border-gray-500 hover:bg-gray-600">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-400"><span class="font-semibold">Click to upload</span></p>
+                            <p class="text-xs  text-gray-400">SVG, PNG, JPG (MAX. 800x400px)</p>
+                        </div>
+                        <input (change)="captureFile($event)" id="dropzone-file" type="file" class="hidden" />
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="h-1/6 flex items-end justify-around">
+            <button (click)="modalClose()" type="button" class="bg-red-400 hover:bg-red-500 rounded-md w-4/12 py-2 text-white">Cancel</button>
+            <button type="button" (click)="saveImage()" class="w-4/12 bg-sky-400 hover:bg-sky-500 rounded-md py-2 text-white">Save</button>
+        </div>
+    </div>
+</div>  
+<div class="  w-full overflow-x-hidden">
+    <app-navbar [perfil]="userProfile" [userImage]="imgUser" ></app-navbar>
+    <div class=" container min-h-[calc(100vh-22rem)]  mx-auto">
+        <div class="flex w-11/12 mx-auto flex-col sm:flex-row sm:items-center profile rounded-xl py-10 my-10 ">
+            <div class="w-11/12 mx-auto sm:mx-0  flex justify-center items-center mb-10 md:w-4/12  sm:mb-0">
+                <div class="relative border-8 border-gray-400 rounded-full p-2 bg-white w-4/6 h-4/6 ">
+                    <div class="relative w-[100%] h-[calc(50vw)] sm:h-[calc(24vw)] md:h-[calc(16vh)] lg:h-[calc(20vh)] xl:h-60 flex justify-center items-center rounded-full   overflow-hidden">
+                        <img *ngIf="imgUser" [src]="imgUser" alt="avatar">
+                        <img *ngIf="!imgUser" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707959976/coffeWeb/website%20image/imn114gfq6nxgfejdnjd.png" alt="avatar">
+                        <div (click)="modal= !modal" class="flex w-full top-0 h-full hover:bg-gray-700/60 absolute rounded-full  justify-center items-center text-white/0 hover:text-gray-300 cursor-pointer">
+                            <h1 class="text-xl font-bold ">change image</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-11/12  md:w-8/12 mx-auto">
+                <h1 class="letter-main font-extrabold text-5xl xl:text-7xl mb-4">Tempest</h1>
+                <h3 class="font-semibold text-base xl:text-xl ">tempest@gmail.com</h3>
+            </div>
+        </div>
+
+        <!-- favorite list -->
+
+        <h2 class="text-center text-3xl sm:text-4xl font-extrabold letter-color">MY FAVORITE PRODUCTS</h2>
+        <div *ngIf="!listFavorite" class="flex relative items-center min-h-[60vh] pb-6 justify-center">
+            <div class="h-72 absolute w-72 rounded-full circulo-center flex items-center justify-center">
+                
+            </div>
+            <h1 class="w-[100rem] z-10  text-center text-4xl font-bold">You have no products <br>in your favorites list</h1>
+        </div>
+        <div *ngIf="listFavorite" class=" mt-4 xl:grid-cols-4 lg:grid-cols-3 min-h-16 pb-10  grid grid-cols-1 sm:grid-cols-2">
+            <div *ngFor="let item of listFavorite ; let index = index" class="card-mid-products mt-8  w-6/12 sm:w-10/12 mx-auto">
+                <app-card-recent-product *ngIf="item.desc == false"  [product]="item" [userForDelete]="true" ></app-card-recent-product>
+                <app-card [userForDelete]="true" *ngIf="item.desc == true" [product]="item" [colorDesc]="index" class="flex items-center" ></app-card>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

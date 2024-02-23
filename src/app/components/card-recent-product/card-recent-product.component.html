@@ -1,0 +1,17 @@
+<div class="relative flex flex-col h-96 items-center bg-white border-2 border-gray-200 rounded-md mt-10 sm:mt-16">
+    <div *ngIf="userForDelete" (click)="deleteProductList()" class="flex justify-center items-center h-10 w-10 rounded-full bg-red-400 absolute -top-4 -right-4 cursor-pointer hover:bg-red-600 ">
+        <i class="fa-solid fa-x text-white"></i>
+    </div>
+    <div class="w-8/12 h-[60%] mb-4">
+        <div class="min-h-[18rem] max-h-[18rem] w-fulloverflow-hidden -translate-y-14 flex justify-center items-center">
+            <img class=" min-w-[140%]" [src]="imgProduct" alt="">
+        </div>
+    </div>
+    <p>blend</p>
+    <h4 class="font-bold">{{nameProduct}}</h4>
+    <h4 class="text-md my-2">${{priceProduct}}</h4>
+    <div *ngIf="!productOfHome" class="flex items-center justify-around w-full">
+        <button (click)="addCartProduct()" class="btn-add-cart">Add to cart</button>
+        <button (click)="addFavoriteProduct()" class=""><i [ngClass]="{'fa-solid': favoriteProduct,'fa-regular': !favoriteProduct, 'text-gray-500': !favoriteProduct , 'text-red-400': favoriteProduct }" class=" fa-heart "></i></button>
+    </div>
+</div>

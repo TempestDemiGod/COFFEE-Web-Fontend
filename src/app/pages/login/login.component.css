@@ -1,0 +1,12 @@
+.letter-color{
+    color: #361405;
+    filter: drop-shadow(0 0 .6rem #ab806f);
+    & .mid{
+      color: #703b26e0;
+    }
+  }
+
+  /* .f-login{
+    background-size: cover;
+    background-image: url('../../../assets/beansRL.webp');
+  } */

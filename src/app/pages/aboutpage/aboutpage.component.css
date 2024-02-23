@@ -1,0 +1,28 @@
+.bg-fondo{
+    background-image: url(../../../assets/beansRL.webp);
+    background-size: cover;
+    background-position: center;
+}
+.letter{
+    color: #966057;
+    filter: drop-shadow(4px 4px 0px #69443d);
+}
+.letter-mid{
+    color: #966057;
+}
+.bg-mid{
+    background-color: #c69891;
+}
+.aboutSpecial{
+    background-image: url(../../../assets/bg-coffe.jpeg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 0 #69443d;
+}
+.aboutbottom{
+    background-image: url(../../../assets/bg-coffe-2.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 0 #69443d;
+}
+    

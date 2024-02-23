@@ -1,0 +1,221 @@
+<div class="  w-full overflow-x-hidden">
+    <app-navbar [perfil]="userProfile" [userImage]="imgUser" ></app-navbar>
+    <div class="flex  flex-col md:flex-row md:h-[calc(100vh-60px)]">
+        <div class="pt-14 h-[calc(100vh-80px)] md:h-auto md:w-7/12 px-8 md:pt-20">
+            <h1 class="font-bold text-8xl sm:text-9xl md:text-8xl xl:text-9xl letter-main">COFFEE</h1>
+            <h2 class="mt-6 letter-color mb-4 font-bold text-5xl md:text-4xl xl:text-6xl">An online coffee store</h2>
+            <p class="text-lg letter-color mb-8">Straight to your doorstep. We don't roast our beans until we have your
+                order. <br>Every order is roasted and shipped the same day.</p>
+            <div class="flex items-center">
+                <button routerLink="/products" type="button"
+                    class="btn-main-products text-white  rounded-full py-1 px-8 me-8 text-sm sm:text-base sm:min-h-12 md:text-xs font-semibold">Explore
+                    our products</button>
+                <button type="button" routerLink="/sign-in"
+                    class="btn-main-login border-2  rounded-full py-1 px-8 text-sm sm:text-base sm:min-h-12 md:text-xs font-bold">Log
+                    in / sign up</button>
+            </div>
+            <div class="flex flex-row mb-6 mt-14 ">
+                <div class="border-e-2 border-slate-400 pe-4 me-4">
+                    <h3>
+                        Our products
+                    </h3>
+                    <h4 class="letter-color font-bold text-4xl me-10 md:me-0">
+                        +1000
+                    </h4>
+                </div>
+                <div>
+                    <h3>
+                        Total sales
+                    </h3>
+                    <h4 class=" letter-color font-bold text-4xl">
+                        +340K
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="md:w-5/12 h-[calc(100vh)] md:h-auto  relative flex items-center">
+            <div
+                class="absolute color-coffeCup flex items-center  lg:w-[70%] xl:w-[70%] w-[70%] h-5/6 right-0 rounded-l-3xl">
+                <img class="min-w-[24rem] sm:-translate-x-20 sm:min-w-[3rem] lg:min-w-[3rem] -translate-x-20 xl:min-w-[40vw] relative  xl:-translate-x-64 xl:-translate-y-14  shadow-customer  "
+                    src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960547/coffeWeb/website%20image/nhn5zblc6xmd63amm7ao.webp" alt="coffeeCup">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="scroller my-10" data-speed="speed">
+        <ul class="tag-list scroller__inner">
+            <li class=" w-72 text-center font-bold text-3xl text-white">COFFEE</li>
+            <li class=" w-72 text-center font-bold text-3xl text-white">COFFEE</li>
+            <li class=" w-72 text-center font-bold text-3xl text-white">COFFEE</li>
+            <li class=" w-72 text-center font-bold text-3xl text-white">COFFEE</li>
+
+        </ul>
+    </div>
+
+    <div class=" container  mx-auto pt-6">
+        <div class="flex flex-col items-center mb-6">
+            <div class="flex flex-col items-center mb-6 mid-circulo">
+                <div class="w-10 h-10 flex justify-center items-center  border-2 rounded-full">
+                    <div class="w-4 h-4 rounded-full bg-gray-600 center-circulo"></div>
+                </div>
+                <div class="mt-1 w-[.1rem] h-4 line"></div>
+            </div>
+            <h3 class="font-bold text-3xl mb-4 letter-color">Explore the recent products</h3>
+            <p class="letter-color">Our delectable drink options, including classic expresso choices, house specialties,
+                fruit smoothies and frozen treats</p>
+        </div>
+        <div class="w-full container-cards mx-auto xl:justify-center pb-4 mb-24">
+            <app-card-recent-product [productOfHome]="true"  *ngFor="let item of mainProducts" [product]="item" class="cardProduct mx-2 "></app-card-recent-product>
+        </div>
+        <div class="w-[80%] mx-auto center-Info flex mb-20 h-60 rounded-xl">
+            <div class="w-full md:w-7/12 xl:w-6/12 flex flex-col justify-center">
+                <h2 class="letter-color font-bold text-3xl ps-4">Check out our <br> best coffee beans</h2>
+                <button routerLink="/products"
+                    class="btn-main-products text-white font-semibold text-base max-w-max px-10 rounded-full mx-auto mt-4 py-4">Explore
+                    our products</button>
+            </div>
+            <div class="hidden md:block w-5/12 xl:w-6/12   rounded-xl">
+                <img class=" -translate-x-10  xl:w-9/12 xl:mx-auto xl:-translate-y-8"
+                    src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960490/coffeWeb/website%20image/y4b9vhj840lpextanjzx.png" alt="">
+            </div>
+        </div>
+
+        <div class="text-center">
+            <h2 class="font-bold text-xl sm:text-3xl mb-4 md:text-4xl letter-color">Weekend <span class="mid">spacial
+                    products</span></h2>
+            <p class="mb-10 letter-color">Check out our daily special product that you can with +%20 OFF!</p>
+            <div class="w-full flex justify-center">
+                <h3 (click)="changeOption('accessories')"
+                    [ngClass]="{'option-on':specialProductsOptions=='accessories','option-off':specialProductsOptions!=='accessories'}"
+                    class="font-semibold cursor-pointer mx-2 text-sm sm:text-base md:text-2xl">Accessories
+                    <hr>
+                </h3>
+                <h3 (click)="changeOption('cooffee beans')"
+                    [ngClass]="{'option-on':specialProductsOptions=='cooffee beans','option-off':specialProductsOptions!=='cooffee beans'}"
+                    class="font-semibold cursor-pointer mx-3 text-sm sm:text-base md:text-2xl">Coffee beans
+                    <hr>
+                </h3>
+                <!-- <h3 (click)="changeOption('apparel')"
+                    [ngClass]="{'option-on':specialProductsOptions=='apparel','option-off':specialProductsOptions!=='apparel'}"
+                    class="font-semibold cursor-pointer mx-3 text-sm sm:text-base md:text-2xl ">Apparel
+                    <hr>
+                </h3> -->
+                <h3 (click)="changeOption('instant coffee')"
+                    [ngClass]="{'option-on':specialProductsOptions=='instant coffee','option-off':specialProductsOptions!=='instant coffee'}"
+                    class="font-semibold cursor-pointer mx-3 text-sm sm:text-base md:text-2xl ">Instant Coffee
+                    <hr>
+                </h3>
+                <!-- <h3 (click)="changeOption('boundle')"
+                    [ngClass]="{'option-on':specialProductsOptions=='boundle','option-off':specialProductsOptions!=='boundle'}"
+                    class="font-semibold cursor-pointer mx-2 text-sm sm:text-base md:text-2xl">Boundle
+                    <hr>
+                </h3> -->
+            </div>
+            <div *ngIf="specialProductsOptions=='accessories'"
+                class="w-full product-container overflow-auto flex mx-auto lg:justify-center pb-4 mb-24 mt-10">
+               
+                <app-card [productOfHome]="true" *ngFor="let item of productsAccessories; let index = index" [product]="item" [colorDesc]="index" class="card-mid-products mx-4"></app-card>
+
+            </div>
+            <div *ngIf="specialProductsOptions=='cooffee beans'"
+                class="w-full overflow-auto flex mx-auto lg:justify-center pb-4 mb-24 mt-10">
+                
+                <app-card [productOfHome]="true" *ngFor="let item of productsCoffe; let index = index" [product]="item" [colorDesc]="index" class="card-mid-products mx-4"></app-card>
+            </div>
+            <div *ngIf="specialProductsOptions=='instant coffee'"
+                class="w-full overflow-auto flex mx-auto lg:justify-center pb-4 mb-24 mt-10">
+                <app-card [productOfHome]="true" *ngFor="let item of productsInstant; let index = index" [product]="item" [colorDesc]="index" class="card-mid-products mx-4"></app-card>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="flex flex-col md:flex-row my-14">
+        <div class="hidden md:flex w-5/12 relative ">
+            <div class="w-full max-h-max my-auto relative">
+                <!-- granos.png
+            coffeeSplash.png -->
+                <img class=" " src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960231/coffeWeb/website%20image/gvzpjnxcq2s1cjg2mw3p.png" alt="">
+            </div>
+            <div
+                class="bg-white/75 border-2 rounded-l-full ps-2 py-1 border-white absolute right-0  line-img w-12/12 xl:w-8/12 flex flex-row">
+                <img class="w-20 h-20 border-2 border-gray-500 rounded-full" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707959976/coffeWeb/website%20image/imn114gfq6nxgfejdnjd.png"
+                    alt="">
+                <div class="ms-4 w-full px-2 h-auto text-justify flex justify-center flex-col">
+                    <h2 class="font-semibold ">Brooklyn Simmons</h2>
+                    <p class="text-xs">Coffe is on of the most successful company... <br>
+                        customer relationship is very good.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-14 w-full md:w-7/12  px-5">
+            <h2 class="letter-color text-4xl font-medium mb-4">We care about the quality of <br> our <span
+                    class="font-extrabold">products</span></h2>
+            <p class="letter-color mb-8">Drinking coffee is one of the most global things you do each days here i can
+                spend a long and comfortable time with this workspace tacilities</p>
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                <div class=" flex ">
+                    <div class="w-24 h-24  flex justify-center items-center">
+                        <div class="w-[5rem] rounded-full h-[5rem] bg-red-500"></div>
+                    </div>
+                    <div class="w-[85%]  h-full flex flex-col justify-center ps-4">
+                        <h2 class="font-bold text-xl">Active community</h2>
+                        <p>Your can reach out whenever <br> you want!</p>
+                    </div>
+                </div>
+                <div class=" flex ">
+                    <div class="w-24 h-24  flex justify-center items-center">
+                        <div class="w-[5rem] rounded-full h-[5rem] bg-red-500"></div>
+                    </div>
+                    <div class="w-[85%]  h-full flex flex-col justify-center ps-4">
+                        <h2 class="font-bold text-xl">Best product design</h2>
+                        <p>We worked a lot to make a <br> great experience</p>
+                    </div>
+                </div>
+                <div class=" flex ">
+                    <div class="w-24 h-24  flex justify-center items-center">
+                        <div class="w-[5rem] rounded-full h-[5rem] bg-red-500"></div>
+                    </div>
+                    <div class="w-[85%]  h-full flex flex-col justify-center ps-4">
+                        <h2 class="font-bold text-xl">Premium quality</h2>
+                        <p>A premium quality coffee is <br> what our customers deserve</p>
+                    </div>
+                </div>
+                <div class=" flex ">
+                    <div class="w-24 h-24  flex justify-center items-center">
+                        <div class="w-[5rem] rounded-full h-[5rem] bg-red-500"></div>
+                    </div>
+                    <div class="w-[85%]  h-full flex flex-col justify-center ps-4">
+                        <h2 class="font-bold text-xl">The best material</h2>
+                        <p>Our product is made by <br> premium materials</p>
+                    </div>
+                </div>
+            </div>
+            <button routerLink="/products"
+                class="btn-main-products block mb-6 text-white font-semibold text-base max-w-max md:ms-4 px-10 rounded-full mx-auto mt-4 py-4">Explore
+                our products</button>
+        </div>
+    </div>
+    <div
+        class="w-[80%] mx-auto center-Info flex mb-20 py-10 xl:py-20 rounded-xl items-center justify-center relative overflow-hidden">
+        <img class="hidden md:block absolute -scale-x-100 left-0 w-3/12 xl:w-2/12" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960345/coffeWeb/website%20image/favk55hd3xku6qzkz8sj.png"
+            alt="">
+        <img class="hidden md:block absolute right-0 w-4/12 translate-x-14" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960305/coffeWeb/website%20image/olxvzicaapcc3hkbsjkj.png" alt="">
+        <div class="w-full md:w-6/12 flex flex-col justify-center text-center">
+            <h2 class="letter-color font-bold text-3xl ps-4">Join in and get <span class="letter-desc">%25 OFF!</span>
+            </h2>
+            <p class="letter-color mx-4 my-2">Subscribe to our newsletter and get %25 OFF discount code</p>
+            <div class="flex flex-col xl:flex-row px-4 md:items-center">
+                <input class="w-full ps-3 rounded-full h-10" type="text" placeholder="Email address">
+                <button
+                    class="mt-4 xl:ms-4 xl:mt-0 btn-main-products text-white font-semibold text-base max-w-max px-10 rounded-full mx-auto py-2 btn-ligth">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+
+
+</div>

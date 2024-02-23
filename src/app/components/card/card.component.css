@@ -1,0 +1,39 @@
+.circulo-center{
+    background: #EFEDEA;
+}
+
+.desc-card{
+    background-color: #EFE7E3;
+    border-radius: .8rem 0 0 .8rem;
+    color: #703A25;
+    font-weight: bold;
+}
+
+.desc-card-mid{
+    border-radius: .8rem 0 0 .8rem;
+    color: white;
+    font-weight: bold;
+    background: -webkit-linear-gradient(0deg,#966057,#401A0C);
+}
+.text-color-price{
+    color: #361405;
+}
+.shadow-product{
+    filter: drop-shadow(.4rem .3rem .1rem #00000072);
+}
+.btn-add-cart{
+    color: #80503E;
+    font-weight: 600;
+}
+
+
+.box-info::-webkit-scrollbar {
+    width: 4px;     
+    height: 8px;    
+    background-color: #F2E5E2;
+    border-radius: 4px;
+  }
+  .box-info::-webkit-scrollbar-thumb {
+    background: #703B26;
+    border-radius: 4px;
+  }

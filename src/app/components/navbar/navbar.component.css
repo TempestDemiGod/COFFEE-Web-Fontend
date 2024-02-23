@@ -1,0 +1,31 @@
+.letter-color{
+    color: #361405;
+    & .mid{
+      color: #7B7664;
+    }
+  }
+  .cart-color{
+    color: #361405;
+    &:hover{
+      color: #7B7664;
+    }
+  }
+  .bgcolorbuton:hover{
+    background-color: #966057;
+  }
+
+  .optionNavbar:hover{
+    background-color: #966057e0;
+    & .imgOption{
+      display: block;
+      filter: drop-shadow(0 0 2px white);
+    }
+  }
+
+  .btn-main-login{
+    background-color: #703B26;
+    color: #ffffff;
+    &:hover{
+      background-color: #703b26b4;
+    }
+  }

@@ -1,0 +1,115 @@
+<div class="w-2/4 sm:w-5/12 md:w-2/12 absolute right-0 z-10">
+    <div *ngFor="let error of errors" class="w-11/12 mx-auto rounded-md py-1 text-center text-white bg-red-500 my-2">
+        {{error}}
+    </div>
+</div>
+
+<div class="relative flex justify-center items-center w-full min-h-[100vh]  f-login">
+    <img class="absolute sm:w-3/12 right-0 top-0 w-4/12" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960345/coffeWeb/website%20image/favk55hd3xku6qzkz8sj.png" alt="">
+    <img class="absolute sm:w-3/12  left-0 bottom-0 w-4/12 -scale-x-100 " src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960345/coffeWeb/website%20image/favk55hd3xku6qzkz8sj.png" alt="">
+    <div class="w-full z-30 ">
+        <section class="">
+            <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                
+                <a routerLink="/" class=" mb-6 text-2xl font-semibold  flex flex-shrink-0 items-center">
+                    <img class="h-20 w-auto" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707959949/coffeWeb/website%20image/l5262d20tad5g0sfyrxi.png" alt="logo">
+                    <span class="letter-color ms-2 font-bold text-4xl ">Coff<span class="mid">ee</span></span>
+                  </a>
+                <div class="w-full relative  rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
+                    <img class="hidden sm:block absolute bottom-0 right-0 translate-x-10 translate-y-6 w-2/12" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707961051/coffeWeb/website%20image/sw58cvk6vrrv6cqvelnv.png" alt="beans">
+                    <!-- form sign in app-->
+                    <div [ngClass]="{'block': loginChange, 'hidden': !loginChange}" class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <h1 class="text-xl font-bold leading-tight tracking-tight  md:text-2xl text-white">
+                            Sign in to your account
+                        </h1>
+                        <form [formGroup]="useForm" class="space-y-4 md:space-y-6" (submit)="Submit()" >
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
+                                <input type="email"  formControlName="email" name="email" id="email" class=" border   sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="name@email.com">
+                                <div *ngIf="useForm.controls.email.invalid && useForm.controls.email.touched && useForm.controls.email.errors">
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="useForm.controls.email.errors['required']">
+                                        Email es requerido
+                                    </div>
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="useForm.controls.email.errors['email']">
+                                        Email es invalido
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="password" class="block mb-2 text-sm font-medium  text-white">Password</label>
+                                <input type="password" name="password" id="password" formControlName="password"  placeholder="••••••••" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 dark:border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+
+                                <div *ngIf="useForm.controls.password.touched && useForm.controls.password.errors">
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="useForm.controls.password.errors['required']">
+                                        Password es requerido
+                                    </div>
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="useForm.controls.password.errors['minlength']">
+                                        Pasword tiene que ser mayo a 6 caracters
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button [disabled]="!useForm.valid" type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800 bg-gray-600 hover:bg-gray-700">Sign in</button>
+                            <p class="text-sm font-light  text-gray-400">
+                                Don’t have an account yet? <a (click)="loginChange =!loginChange" class=" cursor-pointer font-medium text-primary-600 hover:underline text-primary-500">Sign up</a>
+                            </p>
+                        </form>
+                    </div>
+                    <!-- form sign up app-->
+                    <div *ngIf="!loginChange" class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <h1 class="text-xl font-bold leading-tight tracking-tight  md:text-2xl text-white">
+                            Sign up
+                        </h1>
+                        <form [formGroup]="RegisterForm" class="space-y-4 md:space-y-6" (submit)="RegisterSubmit()" >
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium text-white">Username</label>
+                                <input type="text" formControlName="username"  name="Username" id="Username" class=" border   sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="tempest" >
+                                <div *ngIf="RegisterForm.controls.username.invalid && RegisterForm.controls.username.touched && RegisterForm.controls.username.errors">
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="RegisterForm.controls.username.errors['required']">
+                                        UserName es requerido
+                                    </div>
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="RegisterForm.controls.username.errors['minlength']">
+                                        UserName tiene que ser mayo a 6 caracters
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
+                                <input type="email" name="email" formControlName="email" id="email" class=" border   sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="name@email.com" >
+                                <div *ngIf="RegisterForm.controls.email.invalid && RegisterForm.controls.email.touched && RegisterForm.controls.email.errors">
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="RegisterForm.controls.email.errors['required']">
+                                        Email es requerido
+                                    </div>
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="RegisterForm.controls.email.errors['email']">
+                                        Email no es valido
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="password" class="block mb-2 text-sm font-medium  text-white">Password</label>
+                                <input type="password" name="password" formControlName="password"  id="password" placeholder="••••••••" class=" border border-gray-300  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 dark:border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                <div *ngIf="RegisterForm.controls.password.touched && RegisterForm.controls.password.errors">
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="RegisterForm.controls.password.errors['required']">
+                                        Password es requerido
+                                    </div>
+                                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="RegisterForm.controls.password.errors['minlength']">
+                                        Pasword tiene que ser mayo a 6 caracters
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button [disabled]="!RegisterForm.valid" type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800 bg-gray-600 hover:bg-gray-700">Sign up</button>
+                            <p class="text-sm font-light  text-gray-400">
+                                You have an account? <a (click)="loginChange =!loginChange" class=" cursor-pointer font-medium text-primary-600 hover:underline text-primary-500">Sign in</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+                <button routerLink="/" class=" mt-6 text-4xl font-semibold  flex flex-shrink-0 py-4 px-4 rounded-xl items-center bg-slate-600 hover:bg-gray-500">
+                    <i class="text-white fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
+          </section>
+    </div>
+</div>

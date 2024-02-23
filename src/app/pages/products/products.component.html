@@ -1,0 +1,25 @@
+<div class="  w-full overflow-x-hidden">
+    <app-navbar [perfil]="userProfile" [userImage]="imgUser" ></app-navbar>
+    <div class="container mx-auto">
+        <div class="w-11/12 mx-auto mt-14 h-64 bg-title rounded-2xl   flex">
+            <div class=" h-full w-full md:w-6/12  ps-6 flex flex-col justify-center">
+                <h1 class="font-bold text-4xl">All our products</h1>
+                <p class="font-semibold text-xl mt-2">We have quality products</p>
+            </div>
+            <div class="hidden w-6/12 items-center justify-center md:flex ">
+                <img class="w-8/12 lg:w-6/12" src="https://res.cloudinary.com/tempestdemigod/image/upload/v1707960847/coffeWeb/website%20image/ppx5ucixiedoitxrq41r.webp" alt="">
+            </div>
+        </div>
+        <div class="flex justify-center items-center mt-8">
+            <div class="h-1 w-5/12 rounded-xl bg-gray-400"></div>
+            <div class="h-8 w-8 rounded-full border-2 border-gray-400 flex justify-center items-center mx-2">
+                <div class="h-4 rounded-full w-4 bg-gray-600"></div>
+            </div>
+            <div class="h-1 w-5/12 rounded-xl bg-gray-400"></div>
+        </div>
+        <div class=" mt-8 xl:grid-cols-4 lg:grid-cols-3 min-h-80 pb-10  grid grid-cols-1 sm:grid-cols-2">
+            <app-card-recent-product *ngFor="let item of allProducts" [product]="item" class="cardProduct w-6/12 sm:w-10/12 mx-auto"></app-card-recent-product>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,23 @@
+<div class="w-full h-96 relative border-2 border-gray-200 rounded-3xl text-start overflow-hidden">
+    <div *ngIf="userForDelete" (click)="deleteProductList()" class="flex justify-center items-center h-10 w-10 rounded-full bg-red-400 absolute top-0 right-0 z-30 cursor-pointer hover:bg-red-600 ">
+        <i class="fa-solid fa-x text-white"></i>
+    </div>
+    <div [ngClass]="{'desc-card': colorDesc==0 || colorDesc%2==0  , 'desc-card-mid': colorDesc%2!==0}" class="absolute py-2 px-4 right-0 top-4 desc-card ">%{{DESCProduct}}</div>
+    <div class="w-full h-[64%] flex justify-center items-center ">
+        <div class="w-40 h-40 circulo-center rounded-full"></div>
+        <div class="absolute w-44 h-44 shadow-product">
+            <img [src]="URLProduct" alt="">
+        </div>
+    </div>
+    <div class="relative w-[90%] h-[46%] pt-1 mx-auto ">
+        <div class="h-[46%] box-info overflow-auto ">
+            <small class="text-gray-400">Product name</small>
+            <h2 class="font-bold ">{{NAMEProduct}}</h2>
+            <p class="text-xs">${{PRICEProduct}} <span class="text-lg font-bold text-color-price">${{priceNew}}</span></p>
+        </div>
+        <div *ngIf="!productOfHome" class=" h-[30%] flex items-center justify-between w-full">
+            <button (click)="addCartProduct()" class="btn-add-cart">Add to cart</button>
+            <button (click)="addFavoriteProduct()" class=""><i [ngClass]="{'fa-solid': cartProduct,'fa-regular': !cartProduct, 'text-gray-500': !cartProduct , 'text-red-400': cartProduct }" class=" fa-heart "></i></button>
+        </div>
+    </div>
+</div>
